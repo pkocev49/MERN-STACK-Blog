@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useBlogsContext } from "../Hooks/useBlogsContext";
-import BlogDetails from "../Components/BlogDetails";
+import { useNavigate } from "react-router-dom";
 const Blogs = () => {
   const { blogs, dispatch } = useBlogsContext();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -24,11 +25,26 @@ const Blogs = () => {
     };
     fetchBlogs();
   }, []);
+  const handleMoreDetailsClick = (blogId) => {
+    // Use the navigate function to navigate to a specific blog page
+    navigate(`/blog/${blogId}`);
+  };
   return (
     <div>
       <div>
         {blogs &&
-          blogs.map((blog) => <BlogDetails key={blog._id} blog={blog} />)}
+          blogs.map((blog) => (
+            <div key={blog._id}>
+              <h1>{blog.blogTitle}</h1>
+              <button
+                onClick={() => {
+                  handleMoreDetailsClick(blog._id);
+                }}
+              >
+                More Details
+              </button>
+            </div>
+          ))}
       </div>
     </div>
   );

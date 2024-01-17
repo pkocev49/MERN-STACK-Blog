@@ -21,7 +21,11 @@ app.use(express.json());
 // Set up middleware to parse incoming requests with URL-encoded payloads
 // The { extended: true } option allows for parsing complex objects
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+const corsOptions = {
+  origin: "http://localhost:5173",
+  credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(bp.urlencoded({ extended: true }));
 
 app.use("/api/blogs", blogRouter);

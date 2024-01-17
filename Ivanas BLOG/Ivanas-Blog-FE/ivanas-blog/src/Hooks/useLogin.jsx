@@ -9,26 +9,19 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch("http://localhost:3000/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+    const response = await fetch("http://localhost:3000/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+    const json = await response.json();
 
-      if (!response.ok) {
-        const json = await response.json();
-        setError(json.error);
-      } else {
-        const json = await response.json();
-        localStorage.setItem("user", JSON.stringify(json));
-        dispatch({ type: "LOGIN", payload: json });
-      }
-    } catch (error) {
-      console.error("Fetch error:", error);
-      setError("An error occurred while processing your request.");
-    } finally {
-      setIsLoading(false);
+    if (!response.ok) {
+      setError(json.error);
+    }
+    if (response.ok) {
+      localStorage.setItem("user", JSON.stringify(json));
+      dispatch({ type: "LOGIN", payload: json });
     }
   };
   return { login, isLoading, error };

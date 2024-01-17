@@ -14,13 +14,10 @@ const Navbar = () => {
           </Link>
           <div>
             <Link to="/blogs">Blog</Link>
-            {user ? (
+            {user && (
               <>
                 <Link to="/addBlog">Add Blog</Link>
-                {/* Add a logout functionality here if needed */}
               </>
-            ) : (
-              <Link to="/login">Login</Link>
             )}
           </div>
         </div>

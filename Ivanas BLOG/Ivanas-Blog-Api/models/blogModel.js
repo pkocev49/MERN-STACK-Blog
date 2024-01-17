@@ -38,8 +38,6 @@ class BlogModel {
     return {
       _id: updatedB._id.toString(),
       blogTitle: updatedB.blogTitle,
-      blogDescription: updatedB.blogDescription,
-      blogLikes: updatedB.blogLikes,
     };
   }
   async deleteSingleBlog(id) {

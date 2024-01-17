@@ -1,12 +1,13 @@
-import express from "express";
-import BlogController from "../controllers/blogController.js";
-import requireAuth from "../middleware/authMiddleware.js";
+    import express from "express";
+    import BlogController from "../controllers/blogController.js";
+    import requireAuth from "../middleware/authMiddleware.js";
 
-export const blogRouter = express.Router();
+    export const blogRouter = express.Router();
 
-const blogController = new BlogController();
+    const blogController = new BlogController();
 
-blogRouter.get("/", blogController.getAllBlogs);
-blogRouter.post("/", requireAuth, blogController.createBlog);
-blogRouter.patch("/:id", requireAuth, blogController.updateBlog);
-blogRouter.delete("/:id", requireAuth, blogController.deleteBlog);
+    blogRouter.get("/", blogController.getAllBlogs);
+    blogRouter.get("/:id", blogController.getSingleBlog);
+    blogRouter.post("/", requireAuth, blogController.createBlog);
+    blogRouter.patch("/:id", requireAuth, blogController.updateBlog);
+    blogRouter.delete("/:id", requireAuth, blogController.deleteBlog);

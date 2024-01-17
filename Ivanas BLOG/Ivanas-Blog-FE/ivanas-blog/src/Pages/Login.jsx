@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { useLogin } from "../Hooks/useLogin";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, error, isLoading } = useLogin();
@@ -9,6 +12,7 @@ const Login = () => {
     await login(email, password);
     setEmail("");
     setPassword("");
+    navigate(`/`);
   };
   return (
     <form className="login" onSubmit={handleSubmit}>

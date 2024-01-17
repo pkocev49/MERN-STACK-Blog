@@ -24,7 +24,9 @@ const handleErrors = (err) => {
   return errors;
 };
 const createToken = (_id) => {
-  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "3000000d" });
+  return jwt.sign({ _id }, process.env.SECRET, {
+    expiresIn: "300000000000000000000000000000d",
+  });
 };
 
 class AuthController {

@@ -13,6 +13,20 @@ class BlogController {
     }
   }
 
+  //GET A SINGLE BLOG
+  async getSingleBlog(req, res) {
+    const { id } = req.params;
+    try {
+      const blog = await blogModel.findById(id);
+      if (!blog) {
+        return res.status(400).json({ error: "No such blog" });
+      }
+      res.status(200).json(blog);
+    } catch (error) {
+      res.status(400).json({ error: error.message });
+    }
+  }
+
   // CREATE A BLOG
   async createBlog(req, res) {
     const { blogTitle, blogDescription } = req.body;
