@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import BlogForm from "./Components/BlogForm";
 import BlogDetails from "./Components/BlogDetails";
 import { useAuthContext } from "./Hooks/useAuthContext";
+import FeedbacksForm from "./Components/FeedbacksForm";
 function App() {
   const { user } = useAuthContext();
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/blogs" element={<Blogs />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/feedback" element={<FeedbacksForm />} />
             <Route
               path="/addBlog"
               element={user ? <BlogForm /> : <Navigate to="/" />}

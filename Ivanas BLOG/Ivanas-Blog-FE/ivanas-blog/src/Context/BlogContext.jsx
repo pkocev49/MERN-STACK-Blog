@@ -20,6 +20,11 @@ export const blogReducer = (state, action) => {
         ...state,
         blogs: [action.payload, ...state.blogs],
       };
+    case "UPDATE_BLOG":
+      return {
+        ...state,
+        blogs,
+      };
     case "DELETE_BLOG":
       return {
         ...state,

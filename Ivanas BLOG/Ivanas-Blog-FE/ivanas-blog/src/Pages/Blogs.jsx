@@ -7,7 +7,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/blogs");
+        const response = await fetch("http://localhost:4000/api/blogs");
 
         if (!response.ok) {
           // Check for error response

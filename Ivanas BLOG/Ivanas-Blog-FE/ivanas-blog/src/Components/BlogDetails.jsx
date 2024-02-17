@@ -18,7 +18,7 @@ const BlogDetails = () => {
       }
       try {
         const response = await fetch(
-          `http://localhost:3000/api/blogs/${blogId}`
+          `http://localhost:4000/api/blogs/${blogId}`
         );
 
         if (!response.ok) {
@@ -42,7 +42,7 @@ const BlogDetails = () => {
     if (!user) {
       return;
     }
-    const response = await fetch(`http://localhost:3000/api/blogs/${blogId}`, {
+    const response = await fetch(`http://localhost:4000/api/blogs/${blogId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${user.token}`,

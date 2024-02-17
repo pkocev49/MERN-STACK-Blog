@@ -1,7 +1,12 @@
 import React from "react";
+import Feedbacks from "./Feedbacks";
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div>
+      <Feedbacks />
+    </div>
+  );
 };
 
 export default Home;
